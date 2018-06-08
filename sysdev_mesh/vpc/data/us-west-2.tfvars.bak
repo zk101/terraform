@@ -1,0 +1,23 @@
+region_config_map = {
+  amazon_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
+  subnets_dmz  = ["10.130.0.0/23", "10.130.2.0/23", "10.130.4.0/23"]
+  subnets_app  = ["10.130.64.0/23", "10.130.66.0/23", "10.130.68.0/23"]
+  subnets_sys  = ["10.130.72.0/23", "10.130.74.0/23", "10.130.76.0/23"]
+  subnets_data = ["10.130.128.0/23", "10.130.130.0/23", "10.130.132.0/23"]
+}
+
+supernet_config_map = {
+  dmz  = "10.130.0.0/18"
+  app  = "10.130.64.0/18"
+  data = "10.130.128.0/18"
+}
+
+region = "us-west-2"
+
+vpc_cidr_block = "10.130.0.0/16"
+
+global_supernet = "10.128.0.0/11"
+
+tinc_mesh_ip_octet = "3"
+
+route53_zone_name = "sysdev-mesh.exos.fm"

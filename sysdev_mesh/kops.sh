@@ -51,7 +51,6 @@ if [[ ! "${OPT_ACTION}" =~ ^(create|delete|update)$ ]]; then
 fi
 
 if [[ ! -f "${FOLDER_BASE}/vpc/state/${OPT_STATE}/terraform.tfstate" ]]; then
-	echo "${FOLDER_BASE}/vpc/state/${OPT_STATE}/terraform.tfstate"
 	exit_help "State not found!"
 fi
 

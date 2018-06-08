@@ -20,4 +20,4 @@ global_supernet = "10.128.0.0/11"
 
 tinc_mesh_ip_octet = "3"
 
-route53_zone_name = "sysdev-mesh.exos.fm"
+route53_zone_name = "sysdev-mesh.example.com"

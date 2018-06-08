@@ -102,11 +102,11 @@ if [[ "${DEBUG}" == 1 ]]; then
 	done
 	${PROG_ECHO}
 	${PROG_CAT} << EOF
-${PROG_KOPS} create secret --state=${S3_BUCKET} --name kubernetes.${OPT_STATE}.sysdev-mesh.exos.fm sshpublickey admin -i ${FOLDER_BASE}/admin_rsa.pub
+${PROG_KOPS} create secret --state=${S3_BUCKET} --name kubernetes.${OPT_STATE}.sysdev-mesh.example.com sshpublickey admin -i ${FOLDER_BASE}/admin_rsa.pub
 
 ${PROG_KOPS} create cluster \\
 	--cloud=aws \\
-	--name=kube.${OPT_STATE}.sysdev-mesh.exos.fm \\
+	--name=kube.${OPT_STATE}.sysdev-mesh.example.com \\
 	--dns-zone=${ROUTE53_ID} \\
 	--dns=private \\
 	--api-loadbalancer-type=internal \\
@@ -123,20 +123,20 @@ ${PROG_KOPS} create cluster \\
 	--topology=private \\
 	--networking kube-router
 
-${PROG_KOPS} update cluster --state=${S3_BUCKET} --name kube.${OPT_STATE}.sysdev-mesh.exos.fm --yes
+${PROG_KOPS} update cluster --state=${S3_BUCKET} --name kube.${OPT_STATE}.sysdev-mesh.example.com --yes
 
-${PROG_KOPS} delete cluster --state=${S3_BUCKET} --name kube.${OPT_STATE}.sysdev-mesh.exos.fm --yes
+${PROG_KOPS} delete cluster --state=${S3_BUCKET} --name kube.${OPT_STATE}.sysdev-mesh.example.com --yes
 EOF
 	${PROG_ECHO}
 	exit 0
 fi
 
 if [[ "${OPT_ACTION}" =~ ^create$ ]]; then
-	${PROG_KOPS} create secret --state=${S3_BUCKET} --name kubernetes.${OPT_STATE}.sysdev-mesh.exos.fm sshpublickey admin -i ~/.ssh/id_rsa.pub
+	${PROG_KOPS} create secret --state=${S3_BUCKET} --name kubernetes.${OPT_STATE}.sysdev-mesh.example.com sshpublickey admin -i ~/.ssh/id_rsa.pub
 
 	${PROG_KOPS} create cluster \
 		--cloud=aws \
-		--name=kube.${OPT_STATE}.sysdev-mesh.exos.fm \
+		--name=kube.${OPT_STATE}.sysdev-mesh.example.com \
 		--dns-zone=${ROUTE53_ID} \
 		--dns=private \
 		--api-loadbalancer-type=internal \
@@ -155,11 +155,11 @@ if [[ "${OPT_ACTION}" =~ ^create$ ]]; then
 fi
 
 if [[ "${OPT_ACTION}" =~ ^delete$ ]]; then
-	${PROG_KOPS} delete cluster --state=${S3_BUCKET} --name kube.${OPT_STATE}.sysdev-mesh.exos.fm --yes
+	${PROG_KOPS} delete cluster --state=${S3_BUCKET} --name kube.${OPT_STATE}.sysdev-mesh.example.com --yes
 fi
 
 if [[ "${OPT_ACTION}" =~ ^update$ ]]; then
-	${PROG_KOPS} update cluster --state=${S3_BUCKET} --name kube.${OPT_STATE}.sysdev-mesh.exos.fm --yes
+	${PROG_KOPS} update cluster --state=${S3_BUCKET} --name kube.${OPT_STATE}.sysdev-mesh.example.com --yes
 fi
 
 # EOF

@@ -1,5 +1,5 @@
-data "aws_route53_zone" "exos_external_zone" {
-  name         = "exos.fm"
+data "aws_route53_zone" "parent_external_zone" {
+  name         = "example.com"
   private_zone = false
 }
 
@@ -15,7 +15,7 @@ resource "aws_route53_zone" "internal_zone" {
 }
 
 resource "aws_route53_record" "bastion" {
-  zone_id = "${data.aws_route53_zone.exos_external_zone.zone_id}"
+  zone_id = "${data.aws_route53_zone.parent_external_zone.zone_id}"
   name    = "${format("%s.%s", var.region, var.zone_name)}"
   type    = "NS"
   ttl     = "300"
